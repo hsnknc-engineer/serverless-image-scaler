@@ -19,7 +19,6 @@ the following diagram illustrates the flow of image processing with aws lambda a
 ![image](https://github.com/user-attachments/assets/422a6625-b45c-4ff7-a334-a0d7ee0c9ec1)
 
 
-**note:** update `path_to_image.png` with the correct path to the image in your github repository.
 
 1. **source s3 bucket:** where the images are uploaded.
 2. **aws lambda function:** this function is automatically triggered whenever a new image is uploaded to the source bucket. the function processes the images (without resizing in this implementation) and stores them in the destination bucket.
