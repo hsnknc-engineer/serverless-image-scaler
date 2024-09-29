@@ -4,6 +4,8 @@ This project demonstrates the use of aws lambda and s3 to create a serverless im
 
 **Note:** The actual image resizing is not implemented in this project. Zhe focus is on using serverless technologies like aws lambda and s3 to demonstrate an automated image processing workflow.
 
+<br>
+
 ## Technologies used
 
 - **aws lambda:** serverless computing service to run code without provisioning or managing servers.
@@ -11,6 +13,8 @@ This project demonstrates the use of aws lambda and s3 to create a serverless im
 - **python 3.x:** programming language used for the lambda function.
 - **boto3:** aws sdk for python to interact with s3.
 - **cloudwatch:** monitoring and logging service for the lambda function.
+
+<br>
 
 ## Architecture overview
 
@@ -24,12 +28,13 @@ the following diagram illustrates the flow of image processing with aws lambda a
 -   **AWS Lambda Function:** This function is automatically triggered whenever a new image is uploaded to the source bucket. The function processes the images (without resizing in this implementation) and stores them in the destination bucket.
 -   **Destination S3 Bucket:** Where the processed images are stored.
 
+<br>
 
 ## Project Overview
 
 The goal of this project is to demonstrate how serverless technologies like **AWS Lambda** and **S3** can be used to create a simple image processing solution. The solution automatically triggers a Lambda function when an image is uploaded to a **source S3 bucket**. This function processes the image (without resizing) and stores it in a **destination S3 bucket**.
 
-
+<br>
 
 ## Prerequisites
 
@@ -37,7 +42,7 @@ The goal of this project is to demonstrate how serverless technologies like **AW
 -   Permissions to create and manage S3 buckets and Lambda functions.
 -   Familiarity with **AWS IAM policies** to grant Lambda the necessary permissions.
 
-
+<br>
 
 ## Setup Instructions
 
@@ -72,6 +77,7 @@ dest_bucket_name = 'destination-bucket-name'  # Change this to your destination 
 
 -   **`boto3.client('s3')`:** This line creates an S3 client that allows the Lambda function to perform operations on S3, such as reading from the source bucket and writing to the destination bucket.
 -   **`dest_bucket_name`:** This variable should be set to the name of your destination bucket where the processed images will be stored.
+<br>
 
 #### 3.2. Lambda Handler Function
 
@@ -89,6 +95,7 @@ def lambda_handler(event, context):
 
 -   **`event`:** Contains information about the event that triggered the function, including details about the uploaded image. The event object is passed by S3 when a new file is uploaded.
 -   **`s3_event`:** This extracts details of the S3 event, such as the name of the bucket (`bucket_name`) and the key (or filename) of the uploaded image (`object_key`).
+<br>
 
 #### 3.3. Retrieving the Image from S3
 
@@ -103,6 +110,7 @@ image_content = response['Body'].read()`
 ```
 -   **`get_object`:** This method retrieves the image from the source S3 bucket. It requires the `Bucket` and `Key` parameters.
 -   **`response['Body'].read()`:** Reads the content of the image file.
+<br>
 
 #### 3.4. Storing the Image in the Destination Bucket
 
@@ -119,6 +127,7 @@ s3_client.put_object(
 ```
 -   **`put_object`:** This method uploads the image to the destination S3 bucket. The `Body` contains the image data, and the `Key` specifies the location and filename in the destination bucket.
 -   **`resized/{object_key}`:** The key includes a prefix `resized/`, which creates a folder in the destination bucket where all the processed images will be stored.
+<br>
 
 #### 3.5. Error Handling
 
@@ -139,6 +148,7 @@ The function includes a `try-except` block to handle any errors that occur durin
 
 ---
 
+<br>
 
 ### 4. Configure Event Trigger
 
@@ -148,11 +158,15 @@ The function includes a `try-except` block to handle any errors that occur durin
     -   **Event:** "PUT Object" (triggered when an object is uploaded).
     -   **Lambda Function:** Choose the Lambda function you created earlier.
 
+<br>
+
 ### 5. Update IAM Permissions
 
 -   **Step 1:** Go to the IAM console and create a role for the Lambda function.
 -   **Step 2:** Attach the following permissions to the role:
     -   **AmazonS3FullAccess** or a custom policy that grants the Lambda function access to both the source and destination buckets.
+
+<br>
 
 ### 6. Testing the Function
 
@@ -160,10 +174,13 @@ The function includes a `try-except` block to handle any errors that occur durin
 -   **Step 2:** Check the destination bucket to see if the image was successfully stored.
 -   **Step 3:** Check the **CloudWatch Logs** in the Lambda console to ensure no errors occurred.
 
+<br>
+
 ## Focus on Serverless Technologies
 
 The focus of this project is on leveraging **AWS Lambda** and **S3** as core technologies to create a serverless architecture. By integrating Lambda and S3, the entire process is automatically triggered when a new image is uploaded. This implementation demonstrates how to set up a scalable, serverless workflow without dealing with server infrastructure.
 
+<br>
 
 ## Monitoring and Logging
 
