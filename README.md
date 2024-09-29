@@ -16,7 +16,8 @@ this project demonstrates the use of aws lambda and s3 to create a serverless im
 
 the following diagram illustrates the flow of image processing with aws lambda and s3:
 
-![architecture diagram](path_to_image.png)
+![image](https://github.com/user-attachments/assets/422a6625-b45c-4ff7-a334-a0d7ee0c9ec1)
+
 
 **note:** update `path_to_image.png` with the correct path to the image in your github repository.
 
