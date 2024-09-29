@@ -2,7 +2,7 @@
 
 This project demonstrates the use of aws lambda and s3 to create a serverless image processing application. Whenever an image is uploaded to an s3 bucket, an aws lambda function is triggered to process the image and move it to a separate destination bucket.
 
-**Note:** The actual image resizing is not implemented in this project. Zhe focus is on using serverless technologies like aws lambda and s3 to demonstrate an automated image processing workflow.
+**Note:** The actual image resizing is not implemented in this project. The focus is on using serverless technologies like aws lambda and s3 to demonstrate an automated image processing workflow.
 
 <br>
 
